@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controle de gastos pessoais</title>
+<style>
+  body{font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:20px}
+  form{display:flex;flex-wrap:wrap;gap:8px}
+  input,select{padding:9px;border-radius:8px;border:0}
+  input{flex:1;min-width:110px}
+  button{padding:9px 16px;border:0;border-radius:8px;background:#52d1c4;font-weight:700;cursor:pointer}
+  .row{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px}
+  ul{flex:1;min-width:220px;list-style:none;padding:0;margin:0}
+  li{display:flex;justify-content:space-between;gap:8px;background:#1e293b;border-radius:8px;padding:8px 12px;margin-bottom:6px;font-size:14px}
+  .receita{color:#52d1c4}.despesa{color:#ef7a72}
+  .chart{flex:1;min-width:220px;max-width:300px}
+</style>
+</head>
+<body>
+<h3>Saldo do mês: <span id="saldo"></span></h3>
+<form id="f">
+  <input name="desc" placeholder="Descrição" required>
+  <input name="val" type="number" step="0.01" min="0.01" placeholder="Valor (R$)" required>
+  <select name="tipo"><option value="receita">Receita</option><option value="despesa" selected>Despesa</option></select>
+  <select name="cat"><option>Moradia</option><option>Alimentação</option><option>Transporte</option><option>Lazer</option><option>Salário</option></select>
+  <button>Adicionar</button>
+</form>
+<div class="row">
+  <ul id="lista"></ul>
+  <div class="chart"><canvas id="grafico"></canvas></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const esc = s => s.replace(/[&<>"]/g, c => '&#' + c.charCodeAt(0) + ';');
+
+let itens = [
+  { d: 'Salário',  v: 3500, t: 'receita', c: 'Salário' },
+  { d: 'Aluguel',  v: 1200, t: 'despesa', c: 'Moradia' },
+  { d: 'Mercado',  v: 450,  t: 'despesa', c: 'Alimentação' },
+  { d: 'Uber',     v: 120,  t: 'despesa', c: 'Transporte' },
+  { d: 'Cinema',   v: 60,   t: 'despesa', c: 'Lazer' }
+];
+let grafico;
+
+function render() {
+  const saldo = itens.reduce((s, i) => s + (i.t === 'receita' ? i.v : -i.v), 0);
+  const el = document.getElementById('saldo');
+  el.textContent = fmt(saldo);
+  el.className = saldo >= 0 ? 'receita' : 'despesa';
+
+  document.getElementById('lista').innerHTML = itens.map(i =>
+    '<li><span>' + esc(i.d) + ' · ' + i.c + '</span><b class="' + i.t + '">' +
+    (i.t === 'receita' ? '+' : '-') + fmt(i.v) + '</b></li>').join('');
+
+  // gráfico: despesas somadas por categoria
+  const porCat = {};
+  itens.filter(i => i.t === 'despesa').forEach(i => porCat[i.c] = (porCat[i.c] || 0) + i.v);
+  if (!window.Chart) return;
+  if (grafico) grafico.destroy();
+  grafico = new Chart(document.getElementById('grafico'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(porCat),
+      datasets: [{ data: Object.values(porCat), backgroundColor: ['#f0ab4d', '#52d1c4', '#ef7a72', '#c9a4ff'] }]
+    },
+    options: { plugins: { legend: { labels: { color: '#e2e8f0' } } } }
+  });
+}
+
+document.getElementById('f').onsubmit = e => {
+  e.preventDefault();
+  const f = e.target.elements;
+  itens.push({ d: f.desc.value, v: +f.val.value, t: f.tipo.value, c: f.cat.value });
+  e.target.reset();
+  render();
+};
+render();
+</script>
+</body>
+</html>

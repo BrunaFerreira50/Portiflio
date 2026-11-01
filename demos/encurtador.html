@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:20px}
+  form{display:flex;gap:8px}
+  input{flex:1;padding:10px;border-radius:8px;border:0}
+  button{padding:10px 16px;border:0;border-radius:8px;background:#f0ab4d;font-weight:700;cursor:pointer}
+  ul{list-style:none;padding:0;margin:16px 0}
+  li{background:#1e293b;border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:13px;word-break:break-all}
+  li a{color:#52d1c4;font-weight:700}
+  pre{background:#020617;border-radius:8px;padding:12px;font-size:12px;color:#94a3b8;min-height:70px;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<h3>Encurtador de links <small style="color:#94a3b8">(simulação no navegador)</small></h3>
+<form id="f">
+  <input id="u" type="url" placeholder="https://exemplo.com/um/link/bem/longo" required>
+  <button>Encurtar</button>
+</form>
+<ul id="l"></ul>
+<h4>Log da API</h4>
+<pre id="log">// envie uma URL para começar</pre>
+
+<script>
+const banco = [];
+const logEl = document.getElementById('log');
+const lista = document.getElementById('l');
+const esc = s => s.replace(/[&<>"]/g, c => '&#' + c.charCodeAt(0) + ';');
+const log = t => { logEl.textContent = t + String.fromCharCode(10) + logEl.textContent; };
+
+function desenhar() {
+  lista.innerHTML = banco.map(x =>
+    '<li><a href="#" data-c="' + x.code + '">enc.ly/' + x.code + '</a> → ' + esc(x.url) +
+    ' · <b>' + x.clicks + ' cliques</b></li>').join('');
+}
+
+document.getElementById('f').onsubmit = e => {
+  e.preventDefault();
+  const url = document.getElementById('u').value;
+  const code = Math.random().toString(36).slice(2, 8);        // POST /api/links
+  banco.unshift({ code, url, clicks: 0 });
+  log('POST /api/links → 201 {"code":"' + code + '"}');
+  e.target.reset();
+  desenhar();
+};
+
+lista.onclick = e => {
+  const c = e.target.dataset.c;
+  if (!c) return;
+  e.preventDefault();
+  const link = banco.find(x => x.code === c);                  // GET /:code
+  link.clicks++;
+  log('GET /' + c + ' → 302 Location: ' + link.url);
+  desenhar();
+};
+</script>
+</body>
+</html>
