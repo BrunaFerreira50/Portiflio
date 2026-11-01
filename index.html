@@ -25,14 +25,14 @@
     --sans: 'Inter', sans-serif;
     --radius: 18px;
   }
- 
+
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
   }
- 
+
   body{
     margin:0;
     background:
@@ -46,10 +46,10 @@
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
- 
+
   a{ color:inherit; }
   ::selection{ background:var(--amber); color:#1a1400; }
- 
+
   /* ---------- Nav ---------- */
   .tabs{
     position:sticky; top:0; z-index:30;
@@ -81,16 +81,16 @@
   .tabs a.active{ color:var(--text); }
   .tabs a.active::after{ transform:scaleX(1); }
   .tabs a:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; border-radius:4px; }
- 
+
   section{ padding:88px 20px; max-width:880px; margin:0 auto; }
   section#sobre{ padding-top:72px; }
- 
+
   .reveal{
     opacity:0; transform:translateY(22px);
     transition:opacity .6s ease, transform .6s ease;
   }
   .reveal.in{ opacity:1; transform:translateY(0); }
- 
+
   .win{
     background:var(--panel);
     backdrop-filter:blur(18px) saturate(140%);
@@ -110,7 +110,7 @@
   .dot.r{ background:var(--red); } .dot.y{ background:var(--amber); } .dot.g{ background:var(--teal); }
   .win-title{ font-family:var(--mono); font-size:12px; color:var(--muted); margin-left:8px; }
   .win-body{ padding:30px 32px; font-family:var(--mono); font-size:14px; }
- 
+
   .prompt{ color:var(--teal); }
   .out{ color:var(--text); white-space:pre-wrap; }
   .cursor{
@@ -119,7 +119,7 @@
     box-shadow:0 0 12px rgba(240,171,77,0.7);
   }
   @keyframes blink{ 50%{ opacity:0; } }
- 
+
   h2.eyebrow{
     font-family:var(--mono); font-size:12.5px; letter-spacing:.08em;
     color:var(--amber); margin:0 0 10px; text-transform:uppercase;
@@ -133,15 +133,15 @@
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   h1.mono-title{ font-family:var(--mono); font-size:clamp(24px,4vw,32px); font-weight:700; }
- 
+
   p.lead{ color:var(--muted); font-size:16.5px; max-width:60ch; }
- 
+
   /* ---------- Skills ---------- */
   .pkg-key{ color:var(--teal); }
   .pkg-str{ color:var(--amber); }
   .pkg-punc{ color:var(--muted); }
   .indent{ padding-left:22px; }
- 
+
   .chip-cloud{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
   .chip{
     font-family:var(--mono); font-size:13px;
@@ -155,14 +155,14 @@
     border-color:var(--teal);
     background:var(--teal-soft);
   }
- 
+
   /* ---------- Projects grid ---------- */
   .proj-grid{
     display:grid; grid-template-columns:repeat(2, 1fr);
     gap:20px; margin-top:32px;
   }
   @media (max-width:720px){ .proj-grid{ grid-template-columns:1fr; } }
- 
+
   .card{
     position:relative;
     background:var(--panel);
@@ -187,7 +187,7 @@
     box-shadow:0 24px 60px -20px rgba(0,0,0,.6);
   }
   .card:hover::before{ opacity:.7; }
- 
+
   .commit-hash{ font-family:var(--mono); font-size:11.5px; color:var(--amber); letter-spacing:.02em; }
   .commit-msg{ font-family:var(--sans); font-weight:700; font-size:17px; margin:8px 0 10px; letter-spacing:-0.01em; }
   .commit-desc{ color:var(--muted); font-size:14.5px; margin:0 0 16px; }
@@ -205,20 +205,20 @@
     transition:filter .2s ease, transform .2s ease;
   }
   .links a:hover, .links a:focus-visible{ filter:brightness(1.1); transform:translateY(-2px); }
- 
+
   .idea-flag{
     display:inline-block; font-family:var(--mono); font-size:10.5px;
     color:var(--bg); background:var(--amber);
     padding:3px 8px; border-radius:6px; margin-left:8px; vertical-align:middle;
     box-shadow:0 4px 14px -4px rgba(240,171,77,0.6);
   }
- 
+
   /* ---------- Contact ---------- */
   .var-name{ color:var(--teal); }
   .var-val{ color:var(--amber); }
   .fn{ color:#c9a4ff; }
   .comment{ color:var(--muted); }
- 
+
   .contact-cta{
     display:flex; gap:14px; flex-wrap:wrap; margin-top:24px;
   }
@@ -233,12 +233,12 @@
   }
   .contact-cta a:not(.primary):hover{ border-color:var(--teal); background:var(--teal-soft); }
   .contact-cta a:hover{ transform:translateY(-2px); }
- 
+
   footer{
     text-align:center; padding:50px 20px 70px;
     color:var(--muted); font-family:var(--mono); font-size:12px;
   }
- 
+
   /* ---------- Modal (código / demo) ---------- */
   .modal{
     position:fixed; inset:0; z-index:50;
@@ -270,7 +270,7 @@
     margin:0; padding:10px 16px; border-top:1px solid var(--line);
     font-family:var(--mono); font-size:11.5px; color:var(--muted);
   }
- 
+
   @media (max-width:600px){
     section{ padding:56px 16px; }
     .win-body{ padding:20px; font-size:13px; }
@@ -281,14 +281,14 @@
 </style>
 </head>
 <body>
- 
+
 <nav class="tabs" id="tabs">
   <a href="#sobre" class="active">Sobre mim</a>
   <a href="#skills">Habilidades/soft skills</a>
   <a href="#projetos">Projetos/</a>
   <a href="#contato">Contatos</a>
 </nav>
- 
+
 <!-- ============ SOBRE ============ -->
 <section id="sobre">
   <div class="win reveal">
@@ -301,14 +301,14 @@
       <h1 style="margin-top:16px;">Bruna Ferreira <span class="grad">· Estudante de Programação</span></h1>
       <div style="margin-top:24px;">Sobre mim</div>
       <p class="out" style="margin-top:10px;">Olá! Eu sou a Bruna, tenho 24 anos e sou estudante de Análise e Desenvolvimento de Sistemas, com conclusão prevista para dezembro de 2027. Tenho grande interesse pela área de tecnologia e busco constantemente desenvolver meus conhecimentos em programação, dados e inovação.
- 
+
 Possuo conhecimentos em Python, Java, HTML, CSS, Excel e Power BI, além de uma base em bancos de dados. Atualmente, estou estudando inglês em nível básico, buscando aprimorar continuamente minha comunicação e ampliar meus conhecimentos, especialmente para acompanhar conteúdos e oportunidades na área de tecnologia.
- 
+
 Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver problemas e transformar ideias em soluções. Meu objetivo é continuar evoluindo profissionalmente e unir meus conhecimentos de tecnologia e negócios para contribuir na criação de soluções eficientes e inovadoras.<span class="cursor" aria-hidden="true"></span></p>
     </div>
   </div>
 </section>
- 
+
 <!-- ============ SKILLS ============ -->
 <section id="skills">
   <h2 class="eyebrow reveal">// 02</h2>
@@ -337,12 +337,12 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
     <span class="chip">Bancos de dados</span>
   </div>
 </section>
- 
+
 <!-- ============ PROJETOS ============ -->
 <section id="projetos">
   <h2 class="eyebrow reveal">// 03</h2>
   <h1 class="mono-title reveal">Projetos</h1>
- 
+
   <div class="proj-grid">
     <div class="card reveal">
       <div class="commit-hash">commit a3f9c21</div>
@@ -351,7 +351,7 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
       <div class="tech-row"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JavaScript</span><span class="tech">LocalStorage</span></div>
       <div class="links"><a href="https://github.com/brunaferreira50/lista-de-tarefas">Ver código →</a><a href="https://brunaferreira50.github.io/lista-de-tarefas">Demo →</a></div>
     </div>
- 
+
     <div class="card reveal">
       <div class="commit-hash">commit 7b2e0f4</div>
       <div class="commit-msg">Painel de previsão do tempo</div>
@@ -359,7 +359,7 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
       <div class="tech-row"><span class="tech">JavaScript</span><span class="tech">Fetch API</span><span class="tech">CSS Grid</span></div>
       <div class="links"><a href="#" data-proj="weather" data-mode="code">Ver código →</a><a href="#" data-proj="weather" data-mode="demo">Demo →</a></div>
     </div>
- 
+
     <div class="card reveal">
       <div class="commit-hash">commit c815d92</div>
       <div class="commit-msg">Controle de gastos pessoais</div>
@@ -367,7 +367,7 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
       <div class="tech-row"><span class="tech">React</span><span class="tech">Chart.js</span><span class="tech">CSS</span></div>
       <div class="links"><a href="#" data-proj="gastos" data-mode="code">Ver código →</a><a href="#" data-proj="gastos" data-mode="demo">Demo →</a></div>
     </div>
- 
+
     <div class="card reveal">
       <div class="commit-hash">commit f402a17</div>
       <div class="commit-msg">Encurtador de links com API própria</div>
@@ -375,7 +375,7 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
       <div class="tech-row"><span class="tech">Node.js</span><span class="tech">Express</span><span class="tech">SQLite/PostgreSQL</span></div>
       <div class="links"><a href="#" data-proj="encurtador" data-mode="code">Ver código →</a><a href="#" data-proj="encurtador" data-mode="demo">Demo →</a></div>
     </div>
- 
+
     <div class="card reveal" style="grid-column:1 / -1;">
       <div class="commit-hash">commit e91cb3a</div>
       <div class="commit-msg">Blog fullstack com autenticação</div>
@@ -385,7 +385,7 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
     </div>
   </div>
 </section>
- 
+
 <!-- ============ CONTATO ============ -->
 <section id="contato">
   <h2 class="eyebrow reveal">// 04</h2>
@@ -412,11 +412,11 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
     </div>
   </div>
 </section>
- 
+
 <footer>
   Bruna Ferreira ☕
 </footer>
- 
+
 <!-- ============ MODAL: CÓDIGO / DEMO ============ -->
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
   <div class="win modal-box">
@@ -427,15 +427,16 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
         <button class="m-btn" type="button" data-set="code">Código</button>
         <button class="m-btn" type="button" data-set="demo">Demo</button>
         <button class="m-btn" type="button" id="m-copy">Copiar</button>
+        <a class="m-btn" id="m-open" target="_blank" rel="noopener" style="text-decoration:none">Abrir em nova aba ↗</a>
         <button class="m-btn" type="button" id="m-close" aria-label="Fechar">✕</button>
       </div>
     </div>
     <pre id="m-code" tabindex="0"></pre>
-    <iframe id="m-demo" title="Demonstração do projeto" sandbox="allow-scripts"></iframe>
+    <iframe id="m-demo" title="Demonstração do projeto"></iframe>
     <p class="m-note" id="m-note"></p>
   </div>
 </div>
- 
+
 <script>
   // realça a aba ativa conforme o scroll
   const links = document.querySelectorAll('#tabs a');
@@ -448,15 +449,15 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
   };
   document.addEventListener('scroll', setActive, { passive: true });
   setActive();
- 
+
   // animação de entrada ao rolar a página
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
- 
+
   /* ================= Projetos: código + demo ================= */
- 
+
   // --- 1) Painel de previsão do tempo (o mesmo arquivo é o código e a demo) ---
   const WEATHER_APP = `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -480,12 +481,12 @@ Sou uma pessoa analítica, dedicada e curiosa, que gosta de aprender, resolver p
   <button>Buscar</button>
 </form>
 <div id="out"></div>
- 
+
 <script>
 const out = document.getElementById('out');
 const icon = c => c === 0 ? '☀️' : c < 3 ? '⛅' : c < 50 ? '🌫️' : c < 70 ? '🌧️' : c < 80 ? '❄️' : c < 95 ? '🌦️' : '⛈️';
 const esc = s => s.replace(/[&<>"]/g, c => '&#' + c.charCodeAt(0) + ';');
- 
+
 // dados de exemplo, usados se a API estiver fora do ar / sem internet
 const EXEMPLO = {
   current: { temperature_2m: 24, relative_humidity_2m: 68, weather_code: 2 },
@@ -496,7 +497,7 @@ const EXEMPLO = {
     temperature_2m_min: [17, 16, 15, 15, 17, 18]
   }
 };
- 
+
 async function buscar(cidade) {
   out.textContent = 'Carregando...';
   try {
@@ -513,7 +514,7 @@ async function buscar(cidade) {
     mostrar(cidade + ' (dados de exemplo — sem conexão com a API)', EXEMPLO);
   }
 }
- 
+
 function mostrar(nome, w) {
   const c = w.current, d = w.daily;
   const dias = d.time.slice(1, 6).map((t, i) =>
@@ -526,13 +527,13 @@ function mostrar(nome, w) {
     '<div>' + esc(nome) + ' · umidade ' + c.relative_humidity_2m + '%</div>' +
     '<h4>Próximos dias</h4><div class="days">' + dias + '</div>';
 }
- 
+
 document.getElementById('f').onsubmit = e => { e.preventDefault(); buscar(q.value.trim()); };
 buscar('São Paulo');
 <\/script>
 </body>
 </html>`;
- 
+
   // --- 2) Controle de gastos pessoais (código = demo) ---
   const GASTOS_APP = `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -566,12 +567,12 @@ buscar('São Paulo');
   <ul id="lista"></ul>
   <div class="chart"><canvas id="grafico"></canvas></div>
 </div>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>
 <script>
 const fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const esc = s => s.replace(/[&<>"]/g, c => '&#' + c.charCodeAt(0) + ';');
- 
+
 let itens = [
   { d: 'Salário',  v: 3500, t: 'receita', c: 'Salário' },
   { d: 'Aluguel',  v: 1200, t: 'despesa', c: 'Moradia' },
@@ -580,17 +581,17 @@ let itens = [
   { d: 'Cinema',   v: 60,   t: 'despesa', c: 'Lazer' }
 ];
 let grafico;
- 
+
 function render() {
   const saldo = itens.reduce((s, i) => s + (i.t === 'receita' ? i.v : -i.v), 0);
   const el = document.getElementById('saldo');
   el.textContent = fmt(saldo);
   el.className = saldo >= 0 ? 'receita' : 'despesa';
- 
+
   document.getElementById('lista').innerHTML = itens.map(i =>
     '<li><span>' + esc(i.d) + ' · ' + i.c + '</span><b class="' + i.t + '">' +
     (i.t === 'receita' ? '+' : '-') + fmt(i.v) + '</b></li>').join('');
- 
+
   // gráfico: despesas somadas por categoria
   const porCat = {};
   itens.filter(i => i.t === 'despesa').forEach(i => porCat[i.c] = (porCat[i.c] || 0) + i.v);
@@ -605,7 +606,7 @@ function render() {
     options: { plugins: { legend: { labels: { color: '#e2e8f0' } } } }
   });
 }
- 
+
 document.getElementById('f').onsubmit = e => {
   e.preventDefault();
   const f = e.target.elements;
@@ -617,147 +618,86 @@ render();
 <\/script>
 </body>
 </html>`;
- 
+
   // --- 3) Encurtador de links: código do backend + demo simulada no navegador ---
   const ENCURTADOR_CODE = `// server.js — API do encurtador de links (Node.js + Express + SQLite)
 // npm install express better-sqlite3
- 
+
 const express = require('express');
 const Database = require('better-sqlite3');
 const crypto = require('crypto');
- 
+
 const app = express();
 const db = new Database('links.db');
- 
+
 app.use(express.json());
- 
+
 db.exec('CREATE TABLE IF NOT EXISTS links (' +
   'code TEXT PRIMARY KEY, ' +
   'url TEXT NOT NULL, ' +
   'clicks INTEGER DEFAULT 0, ' +
   'created_at TEXT DEFAULT CURRENT_TIMESTAMP)');
- 
+
 // Cria um link curto
 app.post('/api/links', (req, res) => {
   const { url } = req.body;
   try { new URL(url); } catch { return res.status(400).json({ erro: 'URL inválida' }); }
- 
+
   const code = crypto.randomBytes(4).toString('base64url').slice(0, 6);
   db.prepare('INSERT INTO links (code, url) VALUES (?, ?)').run(code, url);
- 
+
   res.status(201).json({
     code,
     short: req.protocol + '://' + req.get('host') + '/' + code
   });
 });
- 
+
 // Lista os links e a contagem de cliques
 app.get('/api/links', (req, res) => {
   res.json(db.prepare('SELECT * FROM links ORDER BY created_at DESC').all());
 });
- 
+
 // Redireciona para a URL original e conta o clique
 app.get('/:code', (req, res) => {
   const link = db.prepare('SELECT url FROM links WHERE code = ?').get(req.params.code);
   if (!link) return res.status(404).send('Link não encontrado');
- 
+
   db.prepare('UPDATE links SET clicks = clicks + 1 WHERE code = ?').run(req.params.code);
   res.redirect(link.url);
 });
- 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('Rodando em http://localhost:' + PORT));
 `;
- 
-  const ENCURTADOR_DEMO = `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body{font-family:system-ui,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:20px}
-  form{display:flex;gap:8px}
-  input{flex:1;padding:10px;border-radius:8px;border:0}
-  button{padding:10px 16px;border:0;border-radius:8px;background:#f0ab4d;font-weight:700;cursor:pointer}
-  ul{list-style:none;padding:0;margin:16px 0}
-  li{background:#1e293b;border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:13px;word-break:break-all}
-  li a{color:#52d1c4;font-weight:700}
-  pre{background:#020617;border-radius:8px;padding:12px;font-size:12px;color:#94a3b8;min-height:70px;white-space:pre-wrap}
-</style>
-</head>
-<body>
-<h3>Encurtador de links <small style="color:#94a3b8">(simulação no navegador)</small></h3>
-<form id="f">
-  <input id="u" type="url" placeholder="https://exemplo.com/um/link/bem/longo" required>
-  <button>Encurtar</button>
-</form>
-<ul id="l"></ul>
-<h4>Log da API</h4>
-<pre id="log">// envie uma URL para começar</pre>
- 
-<script>
-const banco = [];
-const logEl = document.getElementById('log');
-const lista = document.getElementById('l');
-const esc = s => s.replace(/[&<>"]/g, c => '&#' + c.charCodeAt(0) + ';');
-const log = t => { logEl.textContent = t + String.fromCharCode(10) + logEl.textContent; };
- 
-function desenhar() {
-  lista.innerHTML = banco.map(x =>
-    '<li><a href="#" data-c="' + x.code + '">enc.ly/' + x.code + '</a> → ' + esc(x.url) +
-    ' · <b>' + x.clicks + ' cliques</b></li>').join('');
-}
- 
-document.getElementById('f').onsubmit = e => {
-  e.preventDefault();
-  const url = document.getElementById('u').value;
-  const code = Math.random().toString(36).slice(2, 8);        // POST /api/links
-  banco.unshift({ code, url, clicks: 0 });
-  log('POST /api/links → 201 {"code":"' + code + '"}');
-  e.target.reset();
-  desenhar();
-};
- 
-lista.onclick = e => {
-  const c = e.target.dataset.c;
-  if (!c) return;
-  e.preventDefault();
-  const link = banco.find(x => x.code === c);                  // GET /:code
-  link.clicks++;
-  log('GET /' + c + ' → 302 Location: ' + link.url);
-  desenhar();
-};
-<\/script>
-</body>
-</html>`;
- 
+
   const PROJECTS = {
     weather: {
       title: 'Painel de previsão do tempo', file: 'index.html',
-      code: WEATHER_APP, demo: WEATHER_APP,
+      code: WEATHER_APP, demo: 'demos/previsao-tempo.html',
       note: 'Demo usando a API pública Open-Meteo. Pesquise qualquer cidade.'
     },
     gastos: {
       title: 'Controle de gastos pessoais', file: 'index.html',
-      code: GASTOS_APP, demo: GASTOS_APP,
+      code: GASTOS_APP, demo: 'demos/controle-gastos.html',
       note: 'Adicione receitas e despesas e veja o saldo e o gráfico por categoria atualizarem.'
     },
     encurtador: {
       title: 'Encurtador de links com API própria', file: 'server.js',
-      code: ENCURTADOR_CODE, demo: ENCURTADOR_DEMO,
+      code: ENCURTADOR_CODE, demo: 'demos/encurtador.html',
       note: 'Simulação: o servidor Node/Express não roda no navegador, então o log mostra as chamadas que a API real receberia.'
     }
   };
- 
+
   const modal = document.getElementById('modal');
   const mTitle = document.getElementById('m-title');
   const mCode = document.getElementById('m-code');
   const mDemo = document.getElementById('m-demo');
   const mNote = document.getElementById('m-note');
   const mCopy = document.getElementById('m-copy');
+  const mOpen = document.getElementById('m-open');
   const modeBtns = modal.querySelectorAll('[data-set]');
   let current = null, lastFocus = null;
- 
+
   function setMode(mode) {
     const p = PROJECTS[current];
     const isCode = mode === 'code';
@@ -765,13 +705,14 @@ lista.onclick = e => {
     mCode.hidden = !isCode;
     mDemo.hidden = isCode;
     mCopy.hidden = !isCode;
+    mOpen.hidden = isCode;
     mNote.hidden = isCode;
     mNote.textContent = p.note;
-    if (isCode) { mCode.textContent = p.code; mCode.scrollTop = 0; mDemo.srcdoc = ''; }
-    else { mDemo.srcdoc = p.demo; }
+    if (isCode) { mCode.textContent = p.code; mCode.scrollTop = 0; mDemo.removeAttribute('src'); }
+    else { mDemo.src = p.demo; mOpen.href = p.demo; }
     modeBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === mode)));
   }
- 
+
   function openProject(key, mode) {
     current = key;
     lastFocus = document.activeElement;
@@ -780,14 +721,14 @@ lista.onclick = e => {
     setMode(mode);
     document.getElementById('m-close').focus();
   }
- 
+
   function closeModal() {
     modal.hidden = true;
-    mDemo.srcdoc = '';
+    mDemo.removeAttribute('src');
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
- 
+
   document.querySelectorAll('[data-proj]').forEach(a => {
     a.addEventListener('click', e => { e.preventDefault(); openProject(a.dataset.proj, a.dataset.mode); });
   });
@@ -795,7 +736,7 @@ lista.onclick = e => {
   document.getElementById('m-close').addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
- 
+
   mCopy.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(mCode.textContent);
@@ -806,6 +747,5 @@ lista.onclick = e => {
     setTimeout(() => { mCopy.textContent = 'Copiar'; }, 1800);
   });
 </script>
- 
+
 </body></html>
- 
